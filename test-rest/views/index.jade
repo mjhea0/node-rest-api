@@ -1,5 +1,12 @@
-extends layout
-
-block content
-  h1= title
-  p Welcome to #{title}
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    title API Test
+  body
+    h1 Tasks
+    p
+      | &sol;tasks
+    p
+      | &sol;tasks&sol;&colon;id
+    script(src='http://code.jquery.com/jquery-1.11.0.min.js')
