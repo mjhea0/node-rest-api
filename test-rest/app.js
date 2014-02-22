@@ -69,33 +69,32 @@ app.get('/api/posts/:id', function(req, res) {
   var data;
     
     if(req.params.id==1) {
-        data = {
-            labels : ["January","February","March","April","May","June"],
-            datasets : [
-                {
-                    fillColor : "rgba(220,220,220,0.5)",
-                    strokeColor : "rgba(220,220,220,1)",
-                    pointColor : "rgba(220,220,220,1)",
-                    pointStrokeColor : "#fff",
-                    data : [65,59,90,81,16,51]
-                }
-            ]
-        };
-    }else{
-        data = {
-            labels : ["July","August","September","October","November","December"],
-            datasets : [
-                {
-                    fillColor : "rgba(151,187,205,0.5)",
-                    strokeColor : "rgba(151,187,205,1)",
-                    pointColor : "rgba(151,187,205,1)",
-                    pointStrokeColor : "#fff",
-                    data : [28,48,40,19,96,27]
-                }
-            ]
-        };
+      data = {
+        labels : ["January","February","March","April","May","June"],
+        datasets : [
+          {
+            fillColor : "rgba(220,220,220,0.5)",
+            strokeColor : "rgba(220,220,220,1)",
+            pointColor : "rgba(220,220,220,1)",
+            pointStrokeColor : "#fff",
+            data : [65,59,90,81,16,51]
+          }
+        ]
+      };
+    } else {
+      data = {
+        labels : ["July","August","September","October","November","December"],
+        datasets : [
+            {
+                fillColor : "rgba(151,187,205,0.5)",
+                strokeColor : "rgba(151,187,205,1)",
+                pointColor : "rgba(151,187,205,1)",
+                pointStrokeColor : "#fff",
+                data : [28,48,40,19,96,27]
+            }
+        ]
+      };
     }
-    
     res.send(data);
 });
 

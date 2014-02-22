@@ -8,10 +8,10 @@ function MainViewModel(data) {
     $.get("/api/posts/"+id, function(data) {
       self.lineChartData(data); 
       var myLine = new Chart(ctx).Line( vm.lineChartData() );
-          });
+    });
   }
-  
-}
+
+};
 
 var vm = new MainViewModel();
 ko.applyBindings(vm);
