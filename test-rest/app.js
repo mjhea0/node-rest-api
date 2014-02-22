@@ -77,7 +77,7 @@ app.get('/api/posts/:id', function(req, res) {
             strokeColor : "rgba(220,220,220,1)",
             pointColor : "rgba(220,220,220,1)",
             pointStrokeColor : "#fff",
-            data : [65,59,90,81,16,51]
+            data : [6,6,9,8,2,5]
           }
         ]
       };
@@ -90,7 +90,7 @@ app.get('/api/posts/:id', function(req, res) {
                 strokeColor : "rgba(151,187,205,1)",
                 pointColor : "rgba(151,187,205,1)",
                 pointStrokeColor : "#fff",
-                data : [28,48,40,19,96,27]
+                data : [3,8,4,2,10,3]
             }
         ]
       };
