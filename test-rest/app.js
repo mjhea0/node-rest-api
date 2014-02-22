@@ -28,12 +28,12 @@ if ('development' == app.get('env')) {
 // database
 mongoose.connect('mongodb://localhost/test-rest');
 var Schema = mongoose.Schema;  
-var Tasks = new Schema({  
+var Posts = new Schema({  
   title: { type: String, required: true },  
   description: { type: String, required: true },
-  modified: { type: Date, default: Date.now }
+  added: { type: Date, default: Date.now }
 });
-var TasksModel = mongoose.model('Tasks', Tasks); 
+var PostsModel = mongoose.model('Posts', Posts); 
 
 
 // routes
@@ -43,41 +43,80 @@ app.get('/ping', routes.ping);
 app.get('/chart', routes.chart);
 
 // endpoints
-app.get('/api/tasks', function (req, res){
-  return TasksModel.find(function (err, tasks) {
+app.get('/api/posts', function (req, res){
+  return PostsModel.find(function (err, posts) {
     if (!err) {
-      return res.send(tasks);
+      return res.send(posts);
     } else {
       return console.log(err);
     }
   });
 });
-app.get('/api/tasks/:id', function (req, res){
-  return TasksModel.findById(req.params.id, function (err, tasks) {
-    if (!err) {
-      return res.send(tasks);
-    } else {
-      return console.log(err);
+// app.get('/api/posts/:id', function (req, res){
+//   return PostsModel.findById(req.params.id, function (err, posts) {
+//     if (!err) {
+//       return res.send(posts);
+//     } else {
+//       return console.log(err);
+//     }
+//   });
+// });
+
+
+
+app.get('/api/posts/:id', function(req, res) {
+ 
+  var data;
+    
+    if(req.params.id==1) {
+        data = {
+            labels : ["January","February","March","April","May","June"],
+            datasets : [
+                {
+                    fillColor : "rgba(220,220,220,0.5)",
+                    strokeColor : "rgba(220,220,220,1)",
+                    pointColor : "rgba(220,220,220,1)",
+                    pointStrokeColor : "#fff",
+                    data : [65,59,90,81,16,51]
+                }
+            ]
+        };
+    }else{
+        data = {
+            labels : ["July","August","September","October","November","December"],
+            datasets : [
+                {
+                    fillColor : "rgba(151,187,205,0.5)",
+                    strokeColor : "rgba(151,187,205,1)",
+                    pointColor : "rgba(151,187,205,1)",
+                    pointStrokeColor : "#fff",
+                    data : [28,48,40,19,96,27]
+                }
+            ]
+        };
     }
-  });
+    
+    res.send(data);
 });
-app.post('/api/tasks', function (req, res){
-  var tasks;
+
+
+app.post('/api/posts', function (req, res){
+  var posts;
   console.log("POST: ");
   console.log(req.body);
-  tasks = new TasksModel({
+  posts = new PostsModel({
     title: req.body.title,
     description: req.body.description,
     style: req.body.style,
   });
-  tasks.save(function (err) {
+  posts.save(function (err) {
     if (!err) {
       return console.log("created");
     } else {
       return console.log(err);
     }
   });
-  return res.send(tasks);
+  return res.send(posts);
 });
 
 http.createServer(app).listen(app.get('port'), function(){
