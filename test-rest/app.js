@@ -40,9 +40,7 @@ var TasksModel = mongoose.model('Tasks', Tasks);
 app.get('/', routes.index);
 app.get('/api', routes.api);
 app.get('/ping', routes.ping);
-app.get('/chart', function(req, res){
-  res.render("chart.html");
-});
+app.get('/chart', routes.chart);
 
 // endpoints
 app.get('/api/tasks', function (req, res){
