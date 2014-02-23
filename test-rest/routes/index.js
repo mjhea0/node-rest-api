@@ -15,3 +15,7 @@ exports.ping = function(req, res){
 exports.chart = function(req, res){
   res.render("chart");
 };
+
+exports.angular = function(req, res){
+  res.render("angular");
+};

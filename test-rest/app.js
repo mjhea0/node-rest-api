@@ -41,6 +41,7 @@ app.get('/', routes.index);
 app.get('/api', routes.api);
 app.get('/ping', routes.ping);
 app.get('/chart', routes.chart);
+app.get('/angular', routes.angular);
 
 // endpoints
 app.get('/api/posts', function (req, res){
