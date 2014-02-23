@@ -40,11 +40,12 @@ var PostsModel = mongoose.model('Posts', Posts);
 app.get('/', routes.index);
 app.get('/api', routes.api);
 app.get('/ping', routes.ping);
-app.get('/chart', routes.chart);
 app.get('/angular', routes.angular);
 
 // endpoints
 app.get('/api/posts', function (req, res){
+  res.header("Access-Control-Allow-Origin", "http://localhost");
+  res.header("Access-Control-Allow-Methods", "GET, POST");
   return PostsModel.find(function (err, posts) {
     if (!err) {
       return res.send(posts);
@@ -53,52 +54,16 @@ app.get('/api/posts', function (req, res){
     }
   });
 });
-// app.get('/api/posts/:id', function (req, res){
-//   return PostsModel.findById(req.params.id, function (err, posts) {
-//     if (!err) {
-//       return res.send(posts);
-//     } else {
-//       return console.log(err);
-//     }
-//   });
-// });
 
-
-
-app.get('/api/posts/:id', function(req, res) {
- 
-  var data;
-    
-    if(req.params.id==1) {
-      data = {
-        labels : ["January","February","March","April","May","June"],
-        datasets : [
-          {
-            fillColor : "rgba(220,220,220,0.5)",
-            strokeColor : "rgba(220,220,220,1)",
-            pointColor : "rgba(220,220,220,1)",
-            pointStrokeColor : "#fff",
-            data : [6,6,9,8,2,5]
-          }
-        ]
-      };
+app.get('/api/posts/:id', function (req, res){
+  return PostsModel.findById(req.params.id, function (err, posts) {
+    if (!err) {
+      return res.send(posts);
     } else {
-      data = {
-        labels : ["July","August","September","October","November","December"],
-        datasets : [
-            {
-                fillColor : "rgba(151,187,205,0.5)",
-                strokeColor : "rgba(151,187,205,1)",
-                pointColor : "rgba(151,187,205,1)",
-                pointStrokeColor : "#fff",
-                data : [3,8,4,2,10,3]
-            }
-        ]
-      };
+      return console.log(err);
     }
-    res.send(data);
+  });
 });
-
 
 app.post('/api/posts', function (req, res){
   var posts;

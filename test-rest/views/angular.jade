@@ -1,11 +1,12 @@
 doctype html
-html(ng-app='d3DemoApp')
+html(ng-app='demoPosts')
   head
     meta(charset='utf-8')
-    title Angular and D3
-    script(src='http://d3js.org/d3.v2.js')
-    script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.js')
-    script(src='app.js')
-  body(ng-ctrl='AppCtrl')
-    h1 test
-    gh-visualization(val='data')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    title Node Angular Restful-API
+    script(src='//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js')
+    script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js')
+    script(src='javascripts/main.js')
+  body(ng-controller='mainController')
+    {{posts}}
+

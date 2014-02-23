@@ -1,18 +1,15 @@
-function MainViewModel(data) {
-  var self = this;
-  var ctx = $("#canvas").get(0).getContext("2d");
-  
-  self.lineChartData = ko.observable();
-  
-  self.loadDataset = function(id) {
-    $.get("/api/posts/"+id, function(data) {
-      self.lineChartData(data); 
-      var myLine = new Chart(ctx).Line( vm.lineChartData() );
+var demoPosts = angular.module('demoPosts', []);
+
+function mainController($scope, $http) {
+  // when landing on the page, get all the posts and show them
+  $http.get('/api/posts')
+    .success(function(data) {
+      console.log(data)
+      $scope.posts = data;
+    })
+    .error(function(data) {
+      console.log('Error: ' + data);
     });
-  }
+}
 
-};
 
-var vm = new MainViewModel();
-ko.applyBindings(vm);
-vm.loadDataset(1);
