@@ -4,9 +4,13 @@ html(ng-app='demoPosts')
     meta(charset='utf-8')
     meta(name='viewport', content='width=device-width, initial-scale=1')
     title Node Angular Restful-API
+    script(src='./bower_components/angular/angular.js')
+    script(src='./bower_components/d3/d3.js')
+    script(src='./bower_components/nvd3/nv.d3.js')
+    script(src='./bower_components/angularjs-nvd3-directives/dist/angularjs-nvd3-directives.js')
+    link(rel='stylesheet', href='./bower_components/nvd3/nv.d3.css')
     script(src='//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js')
     script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js')
     script(src='javascripts/main.js')
   body(ng-controller='mainController')
-    {{posts}}
-
+    nvd3-line-chart(data='data', showxaxis='true', showyaxis='true', tooltips='true', interactive='true')
