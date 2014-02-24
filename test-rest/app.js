@@ -42,6 +42,7 @@ app.get('/', routes.index);
 app.get('/api', routes.api);
 app.get('/ping', routes.ping);
 app.get('/angular', routes.angular);
+app.get('/test', routes.test);
 
 // endpoints
 app.get('/api/posts', function (req, res){
@@ -49,9 +50,11 @@ app.get('/api/posts', function (req, res){
   res.header("Access-Control-Allow-Methods", "GET, POST");
   return PostsModel.find(function (err, posts) {
     if (!err) {
+      console.log(posts)
       my_list = []
       for (var j = 0; j < posts.length; j++){
-        my_list.push([parseInt(moment(posts[j].added).format("X")),j+1]);
+        // my_list.push([parseInt(moment(posts[j].added).format("X")),j+1]);
+        my_list.push([(moment(posts[j].added).format("X")),j+1]);
       }
       console.log(my_list)
       return res.send(my_list);
