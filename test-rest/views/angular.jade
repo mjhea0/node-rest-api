@@ -9,10 +9,14 @@ html(ng-app='demoPosts')
     script(src='javascripts/bower_components/d3/d3.js')
     script(src='javascripts/bower_components/nvd3/nv.d3.js')
     script(src='javascripts/bower_components/angularjs-nvd3-directives/dist/angularjs-nvd3-directives.js')
-    link(rel='stylesheet', href='javascripts/bower_components/nvd3/nv.d3.css')
     script(src='//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js')
     script(src='javascripts/main.js')
+    link(rel='stylesheet', href='javascripts/bower_components/nvd3/nv.d3.css')
+    link(rel='stylesheet', href='stylesheets/main.css')
   body(ng-controller='mainController')
+    .navbar
+    .sidebar
+    .wrapper
     //- nvd3-line-chart(data='posts', showxaxis='true', showyaxis='true', tooltips='true', interactive='true')
     h1 JSON Data: 
     {{posts}}
