@@ -51,8 +51,9 @@ app.get('/api/posts', function (req, res){
     if (!err) {
       my_list = []
       for (var j = 0; j < posts.length; j++){
-        my_list.push([moment(posts[j].added).format("MM/DD/YY")],j+1);
+        my_list.push([moment(posts[j].added).format("X"),j+1]);
       }
+      console.log(my_list)
       return res.send(my_list);
     } else {
       return console.log(err);

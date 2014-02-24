@@ -12,7 +12,7 @@ html(ng-app='demoPosts')
     script(src='//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js')
     script(src='javascripts/main.js')
   body(ng-controller='mainController')
-    nvd3-line-chart(data='posts', showxaxis='true', showyaxis='true', tooltips='true', interactive='true')
-    {{posts}}
-
+    //- nvd3-line-chart(data='posts', showxaxis='true', showyaxis='true', tooltips='true', interactive='true')
+    nvd3-line-chart(data='posts', width='550', height='350', showxaxis='true', showyaxis='true')
+      {{posts}}
 
