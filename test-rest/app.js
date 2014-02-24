@@ -3,7 +3,8 @@ var express = require('express'),
     routes = require('./routes'),
     http = require('http'),
     path = require('path'),
-    mongoose = require('mongoose');
+    mongoose = require('mongoose'),
+    moment = require('moment');
 
 // create express server
 var app = express();
@@ -48,7 +49,12 @@ app.get('/api/posts', function (req, res){
   res.header("Access-Control-Allow-Methods", "GET, POST");
   return PostsModel.find(function (err, posts) {
     if (!err) {
-      return res.send(posts);
+      my_list = []
+      for (var j = 0; j < posts.length; j++){
+        console.log([j+1,moment(posts[j].added).format("MM/DD/YY")]);
+        my_list.push([j+1,moment(posts[j].added).format("MM/DD/YY")])
+      }
+      return res.send(my_list);
     } else {
       return console.log(err);
     }
