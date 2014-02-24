@@ -5,14 +5,20 @@ function mainController($scope, $http) {
   $http.get('/api/posts')
     .success(function(data) {
       console.log(data)
-      $scope.posts = [
-      {
+      $scope.posts = 
+      [{
         "key":"series 1",
         "values": data
-      }
-      ];
+      }];
+
     })
     .error(function(data) {
       console.log('Error: ' + data);
     });
 }
+
+
+
+
+
+

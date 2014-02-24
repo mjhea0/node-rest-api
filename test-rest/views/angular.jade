@@ -13,6 +13,5 @@ html(ng-app='demoPosts')
     script(src='javascripts/main.js')
   body(ng-controller='mainController')
     //- nvd3-line-chart(data='posts', showxaxis='true', showyaxis='true', tooltips='true', interactive='true')
-    nvd3-line-chart(data='posts', width='550', height='350', showxaxis='true', showyaxis='true')
+    nvd3-line-chart(data='posts', width='550', height='350', showxaxis='false', showyaxis='true', xAxisTickFormat="xAxisTickFormat_Date_Format()", yAxisTickFormat="yAxisTickFormatFunction()")
       {{posts}}
-
