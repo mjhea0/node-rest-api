@@ -33,7 +33,6 @@ if ('development' == app.get('env')) {
 app.get('/', routes.index);
 app.get('/api', routes.api);
 app.get('/ping', routes.ping);
-app.get('/dash', routes.dash);
 
 // endpoints
 app.get('/api/v1/posts', function (req, res){
@@ -58,8 +57,9 @@ app.get('/api/v1/active', function (req, res){
 });
 app.get('/api/v1/likes', function (req, res){
   totalLikes = []
-  for(i = 20; i >= 0; i--){
-    totalLikes.push({"date":Faker.Date.future(20), "likes":Faker.Helpers.randomNumber(200)})
+  for(i = 7; i >= 0; i--){
+    totalLikes.push({"date":moment(Faker.Date.future(20000)).format("X"), 
+      "likes":100+Faker.Helpers.randomNumber(200)})
   };
   return res.send(totalLikes);
 });

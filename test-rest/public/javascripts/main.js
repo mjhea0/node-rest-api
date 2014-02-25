@@ -1,45 +1,59 @@
-var demoAPI = angular.module('demoAPI', []);
+var demoAPI = angular.module('demoAPI', ['nvd3ChartDirectives']);
 
 function mainController($scope, $http) {
-  // when landing on the page, get all the posts and show them
   $http.get('/api/v1/users')
-    .success(function(data) {
-      console.log(data["total_users"])
-      $scope.users = data["total_users"];
+    .success(function(users) {
+      console.log(users["total_users"])
+      $scope.users = users["total_users"];
     })
-    .error(function(data) {
-      console.log('Error: ' + data);
+    .error(function(users) {
+      console.log('Error: ' + users);
     });
   $http.get('/api/v1/posts')
-    .success(function(data) {
-      console.log(data["total_posts"])
-      $scope.posts = data["total_posts"];
+    .success(function(posts) {
+      console.log(posts["total_posts"])
+      $scope.posts = posts["total_posts"];
     })
-    .error(function(data) {
-      console.log('Error: ' + data);
+    .error(function(posts) {
+      console.log('Error: ' + posts);
     });
   $http.get('/api/v1/comments')
-    .success(function(data) {
-      console.log(data["total_comments"])
-      $scope.comments = data["total_comments"];
+    .success(function(comments) {
+      console.log(comments["total_comments"])
+      $scope.comments = comments["total_comments"];
     })
-    .error(function(data) {
-      console.log('Error: ' + data);
+    .error(function(comments) {
+      console.log('Error: ' + comments);
     });
   $http.get('/api/v1/active')
-    .success(function(data) {
-      console.log(data["total_active"])
-      $scope.active = data["total_active_users"];
+    .success(function(active) {
+      console.log(active["total_active_users"])
+      $scope.active = active["total_active_users"];
     })
-    .error(function(data) {
-      console.log('Error: ' + data);
+    .error(function(active) {
+      console.log('Error: ' + active);
     });
   $http.get('/api/v1/likes')
-    .success(function(data) {
-      console.log(data)
-      $scope.likes = data;
+    .success(function(likes) {
+        test = []
+        for (var i = 0; i < likes.length; i++) {
+          test.push([likes[i]["date"],likes[i]["likes"]])
+        };
+        console.log(test)
+      $scope.likes = [
+      {
+        "key" : "just_a_test" ,
+        "values": test
+      }
+      ];
+      $scope.xAxisTickFormat_Date_Format = function(){
+        return function(d){
+          return d3.time.format('%m-%d-%Y')(moment.unix(d).toDate());
+        }
+      };
     })
-    .error(function(data) {
-      console.log('Error: ' + data);
+    .error(function(likes) {
+      console.log('Error: ' + likes);
     });
 }
+

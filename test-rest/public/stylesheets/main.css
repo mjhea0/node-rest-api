@@ -56,11 +56,16 @@ div {
   text-align: center;
 }
 
-.width {
+.box {
   width: 23%;
   float:left;
   display: block;
-  border:1px solid #3498db; 
+  border:1px solid #333e48; 
   margin: 10px;
   min-height: 100px;
+  background-color: #3498db;
+  color: white;
+  border-radius: 4px;
 }
+
+

@@ -1,12 +1,56 @@
 doctype html
-html(lang='en')
+html(ng-app='demoAPI')
   head
     meta(charset='utf-8')
-    title API Docs
-  body
-    h1 API Documentation
-    p
-      | &sol;posts
-    p
-      | &sol;users
-    script(src='http://code.jquery.com/jquery-1.11.0.min.js')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(name='description', content='')
+    title Node Angular Restful-API
+    link(rel='stylesheet', href='http://yui.yahooapis.com/pure/0.4.2/pure-min.css')
+    link(rel='stylesheet', href='stylesheets/test.css')
+    script(src='http://yui.yahooapis.com/3.14.1/build/yui/yui-min.js')
+    script(src='http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js')
+    script(src='javascripts/bower_components/angular/angular.js')
+    script(src='javascripts/bower_components/d3/d3.js')
+    script(src='javascripts/bower_components/nvd3/nv.d3.js')
+    script(src='javascripts/bower_components/angularjs-nvd3-directives/dist/angularjs-nvd3-directives.js')
+    script(src='//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js')
+    script(src='javascripts/main.js')
+    link(rel='stylesheet', href='javascripts/bower_components/nvd3/nv.d3.css')
+    link(rel='stylesheet', href='stylesheets/test.css')
+  body(ng-controller='mainController')
+    .header
+      .home-menu.pure-menu.pure-menu-open.pure-menu-horizontal.pure-menu-fixed
+        ul
+          li.pure-menu-selected
+            a(href='#') Home
+          li
+            a(href='#') Foo
+          li
+            a(href='#') Bar
+      #main
+        .header
+          h1 Analytics!
+          h2 Foo Bar <3 Brave New Analytics <3 Foo Bar
+        <br>
+        .content
+          .pure-g
+            .pure-u-1-4
+              h2 Total Users<br>{{users}}
+            .pure-u-1-4
+              h2 Active Users<br>{{active}}
+            .pure-u-1-4
+              h2 Total Posts<br>{{posts}}
+            .pure-u-1-4
+              h2 Total Comments<br>{{comments}}
+          .pure-g
+            .pure-u-1-1
+              h2 Total Likes<br>
+              nvd3-discrete-bar-chart(
+                data='likes', 
+                showxaxis='true', 
+                showyaxis='true', 
+                tooltips='true', 
+                interactive='true',
+                height="600",
+                xAxisTickFormat="xAxisTickFormat_Date_Format()")
+

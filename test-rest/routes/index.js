@@ -11,7 +11,3 @@ exports.api = function(req, res){
 exports.ping = function(req, res){
   res.send("pong!", 200);
 };
-
-exports.dash = function(req, res){
-  res.render("angular");
-};
