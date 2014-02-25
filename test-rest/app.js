@@ -33,20 +33,30 @@ if ('development' == app.get('env')) {
 app.get('/', routes.index);
 app.get('/api', routes.api);
 app.get('/ping', routes.ping);
-app.get('/angular', routes.angular);
-app.get('/test', routes.test);
+app.get('/dash', routes.dash);
 
 // endpoints
 app.get('/api/v1/posts', function (req, res){
-  var totalPosts = Faker.Helpers.randomNumber(2000);
-  console.log(totalPosts+1000)
-  return res.send({"total_posts":totalPosts+10000});
+  var totalPosts = 10000 + Faker.Helpers.randomNumber(2000);
+  console.log(totalPosts)
+  return res.send({"total_posts":totalPosts});
+});
+
+app.get('/api/v1/comments', function (req, res){
+  var totalComments = 100000 + Faker.Helpers.randomNumber(2000);
+  console.log(totalComments)
+  return res.send({"total_comments":totalComments});
 });
 
 app.get('/api/v1/users', function (req, res){
-  var totalUsers = Faker.Helpers.randomNumber(2000);
-  console.log(totalUsers+1000)
-  return res.send({"total_users":totalUsers+1000});
+  var totalUsers = 1000 + Faker.Helpers.randomNumber(2000);
+  console.log(totalUsers)
+  return res.send({"total_users":totalUsers});
+});
+app.get('/api/v1/active', function (req, res){
+  var totalActive = 10000 + Faker.Helpers.randomNumber(2000);
+  console.log(totalActive)
+  return res.send({"total_active_users":totalActive});
 });
 
 http.createServer(app).listen(app.get('port'), function(){

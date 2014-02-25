@@ -5,17 +5,13 @@ exports.index = function(req,res){
 }
 
 exports.api = function(req, res){
-  res.send("test api!", 200);
+  res.send("wheee!", 200);
 };
 
 exports.ping = function(req, res){
   res.send("pong!", 200);
 };
 
-exports.angular = function(req, res){
+exports.dash = function(req, res){
   res.render("angular");
-};
-
-exports.test = function(req, res){
-  res.render("test");
 };
