@@ -1,22 +1,19 @@
-var demoPosts = angular.module('demoPosts', ['nvd3ChartDirectives']);
-
+var demoAPI = angular.module('demoAPI', []);
 
 function mainController($scope, $http) {
   // when landing on the page, get all the posts and show them
-  $http.get('/api/posts')
+  $http.get('/api/v1/users')
     .success(function(data) {
-      console.log(data)
-      $scope.posts = 
-      [{
-        "key":"series 1",
-        "values": data
-      }
-      ]
-      $scope.xAxisTickFormatFunction = function(){
-        return function(d){
-          return d3.time.format("%Y-%m-%d")(moment.unix(d).toDate());
-        }
-      };
+      console.log(data["total_users"])
+      $scope.users = data["total_users"];
+    })
+    .error(function(data) {
+      console.log('Error: ' + data);
+    });
+  $http.get('/api/v1/posts')
+    .success(function(data) {
+      console.log(data["total_posts"])
+      $scope.posts = data["total_posts"];
     })
     .error(function(data) {
       console.log('Error: ' + data);

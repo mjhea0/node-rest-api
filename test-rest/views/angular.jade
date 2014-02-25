@@ -1,31 +1,23 @@
 doctype html
-html(ng-app='demoPosts')
+html(ng-app='demoAPI')
   head
     meta(charset='utf-8')
     meta(name='viewport', content='width=device-width, initial-scale=1')
     title Node Angular Restful-API
-    script(src='http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js')
-    script(src='javascripts/bower_components/angular/angular.js')
-    script(src='javascripts/bower_components/d3/d3.js')
-    script(src='javascripts/bower_components/nvd3/nv.d3.js')
-    script(src='javascripts/bower_components/angularjs-nvd3-directives/dist/angularjs-nvd3-directives.js')
     script(src='//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js')
+    script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js')
     script(src='javascripts/main.js')
-    link(rel='stylesheet', href='javascripts/bower_components/nvd3/nv.d3.css')
-    link(rel='stylesheet', href='stylesheets/main.css')
+    link(href='stylesheets/main.css', rel='stylesheet')
   body(ng-controller='mainController')
     .navbar
     .sidebar
     .wrapper
-    //- nvd3-line-chart(data='posts', showxaxis='true', showyaxis='true', tooltips='true', interactive='true')
-    h1 JSON Data: 
-    {{posts}}
-    nvd3-line-chart(
-      data='posts', 
-      width='550', 
-      height='350', 
-      showxaxis='true', 
-      showyaxis='true', 
-      xAxisTickFormat="xAxisTickFormatFunction()"
-      )
+      .width
+        h2 Total Users<br>{{users}}
+      .width
+        h2 Total Posts<br>{{posts}}
+      .width
+        h2 Total foo<br>bar
+      .width
+        h2 Total foo<br>bar
     

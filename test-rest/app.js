@@ -4,10 +4,12 @@ var express = require('express'),
     http = require('http'),
     path = require('path'),
     mongoose = require('mongoose'),
-    moment = require('moment');
+    moment = require('moment'),
+    Faker = require('Faker');
 
 // create express server
 var app = express();
+
 
 // all environments
 app.set('port', process.env.PORT || 1337);
@@ -26,16 +28,6 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-// database
-mongoose.connect('mongodb://localhost/test-rest');
-var Schema = mongoose.Schema;  
-var Posts = new Schema({  
-  title: { type: String, required: true },  
-  description: { type: String, required: true },
-  added: { type: Date, default: Date.now }
-});
-var PostsModel = mongoose.model('Posts', Posts); 
-
 
 // routes
 app.get('/', routes.index);
@@ -45,52 +37,16 @@ app.get('/angular', routes.angular);
 app.get('/test', routes.test);
 
 // endpoints
-app.get('/api/posts', function (req, res){
-  res.header("Access-Control-Allow-Origin", "http://localhost");
-  res.header("Access-Control-Allow-Methods", "GET, POST");
-  return PostsModel.find(function (err, posts) {
-    if (!err) {
-      console.log(posts)
-      my_list = []
-      for (var j = 0; j < posts.length; j++){
-        // my_list.push([parseInt(moment(posts[j].added).format("X")),j+1]);
-        my_list.push([(moment(posts[j].added).format("X")),j+1]);
-      }
-      console.log(my_list)
-      return res.send(my_list);
-    } else {
-      return console.log(err);
-    }
-  });
+app.get('/api/v1/posts', function (req, res){
+  var totalPosts = Faker.Helpers.randomNumber(2000);
+  console.log(totalPosts+1000)
+  return res.send({"total_posts":totalPosts+10000});
 });
 
-app.get('/api/posts/:id', function (req, res){
-  return PostsModel.findById(req.params.id, function (err, posts) {
-    if (!err) {
-      return res.send(posts);
-    } else {
-      return console.log(err);
-    }
-  });
-});
-
-app.post('/api/posts', function (req, res){
-  var posts;
-  console.log("POST: ");
-  console.log(req.body);
-  posts = new PostsModel({
-    title: req.body.title,
-    description: req.body.description,
-    style: req.body.style,
-  });
-  posts.save(function (err) {
-    if (!err) {
-      return console.log("created");
-    } else {
-      return console.log(err);
-    }
-  });
-  return res.send(posts);
+app.get('/api/v1/users', function (req, res){
+  var totalUsers = Faker.Helpers.randomNumber(2000);
+  console.log(totalUsers+1000)
+  return res.send({"total_users":totalUsers+1000});
 });
 
 http.createServer(app).listen(app.get('port'), function(){
