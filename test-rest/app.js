@@ -41,13 +41,11 @@ app.get('/api/v1/posts', function (req, res){
   console.log(totalPosts)
   return res.send({"total_posts":totalPosts});
 });
-
 app.get('/api/v1/comments', function (req, res){
   var totalComments = 100000 + Faker.Helpers.randomNumber(2000);
   console.log(totalComments)
   return res.send({"total_comments":totalComments});
 });
-
 app.get('/api/v1/users', function (req, res){
   var totalUsers = 1000 + Faker.Helpers.randomNumber(2000);
   console.log(totalUsers)
@@ -58,7 +56,16 @@ app.get('/api/v1/active', function (req, res){
   console.log(totalActive)
   return res.send({"total_active_users":totalActive});
 });
+app.get('/api/v1/likes', function (req, res){
+  totalLikes = []
+  for(i = 20; i >= 0; i--){
+    totalLikes.push({"date":Faker.Date.future(20), "likes":Faker.Helpers.randomNumber(200)})
+  };
+  return res.send(totalLikes);
+});
 
+
+// launch server
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });

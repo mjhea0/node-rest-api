@@ -34,10 +34,12 @@ function mainController($scope, $http) {
     .error(function(data) {
       console.log('Error: ' + data);
     });
+  $http.get('/api/v1/likes')
+    .success(function(data) {
+      console.log(data)
+      $scope.likes = data;
+    })
+    .error(function(data) {
+      console.log('Error: ' + data);
+    });
 }
-
-
-
-
-
-

@@ -62,4 +62,5 @@ div {
   display: block;
   border:1px solid #3498db; 
   margin: 10px;
+  min-height: 100px;
 }
