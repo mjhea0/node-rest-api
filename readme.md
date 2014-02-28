@@ -9,8 +9,9 @@
 5. Faker.js
 6. Moment.js
 
-![pic](https://raw.github.com/mjhea0/node-rest-api/master/analytics-d3.png)
-
 #### To Do
 
 1. Add Tests
+
+![pic](https://raw.github.com/mjhea0/node-rest-api/master/analytics-d3.png)
+
