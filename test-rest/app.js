@@ -34,7 +34,7 @@ app.get('/', routes.index);
 app.get('/api', routes.api);
 app.get('/ping', routes.ping);
 
-// endpoints
+// api endpoints
 app.get('/api/v1/posts', function (req, res){
   var totalPosts = 10000 + Faker.Helpers.randomNumber(2000);
   console.log(totalPosts)
@@ -63,6 +63,19 @@ app.get('/api/v1/likes', function (req, res){
   };
   return res.send(totalLikes);
 });
+app.get('/api/v1/foo', function (req, res){
+  var totalFoo = [{ key: "One", y: 5 },{ key: "Two", y: 2 },{ key: "Three", y: 9 },{ key: "Four", y: 7 },
+{ key: "Five", y: 4 },{ key: "Six", y: 3 },{ key: "Seven", y: 9 }]
+  console.log(totalFoo)
+  return res.send({"total_foo":totalFoo});
+});
+app.get('/api/v1/bar', function (req, res){
+  var totalBar = [{ key: "One", y: 5 },{ key: "Two", y: 2 },{ key: "Three", y: 9 },{ key: "Four", y: 7 },
+{ key: "Five", y: 4 },{ key: "Six", y: 3 },{ key: "Seven", y: 9 }]
+  console.log(totalBar)
+  return res.send({"total_bar":totalBar});
+});
+
 
 
 // launch server

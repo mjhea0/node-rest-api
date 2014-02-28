@@ -28,24 +28,59 @@ html(ng-app='demoAPI')
             a(href='#') Bar
       #main
         .header
-          h1 Analytics!
-          h2 Foo Bar Foo Bar
+          h1 Analytics
+          h2 for the past thirty days
+          <br>
+          <br>
         <br>
         .content
           .pure-g
+            <br>
             .pure-u-1-4
-              h2 Total Users<br>{{users}}
+              h2 Total Users
+              h3 {{users}}
             .pure-u-1-4
-              h2 Active Users<br>{{active}}
+              h2 Active Users
+              h3 {{active}}
             .pure-u-1-4
-              h2 Total Posts<br>{{posts}}
+              h2 Total Posts
+              h3 {{posts}}
             .pure-u-1-4
-              h2 Total Comments<br>{{comments}}
+              h2 Total Comments
+              h3 {{comments}}
+          <hr>
+          <br>
+          .pure-g
+            <br>
+            .pure-u-1-2
+              h2 Foo
+              nvd3-pie-chart(
+                data="foo"
+                showLabels="true"
+                margin="{left:10,top:10,bottom:10,right:0}"
+                x="xFunction()"
+                y="yFunction()"
+                height="300"
+                donut="true"
+                donutRatio=".5"
+                donutLabelsOutside="true")
+            .pure-u-1-2
+              h2 Bar
+              nvd3-pie-chart(
+                data="bar"
+                x="xFunction()"
+                y="yFunction()"
+                showLabels="true"
+                pieLabelsOutside="true"
+                showValues="true"
+                height="350"
+                labelType="percent")
+              <br>
           <hr>
           <br>
           .pure-g
             .pure-u-1-1
-              h2 Total Likes<br>
+              h2 Total Likes<br><br><br>
               .div.test
                 nvd3-discrete-bar-chart(
                   data='likes'

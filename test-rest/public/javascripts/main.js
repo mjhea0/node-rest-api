@@ -55,5 +55,55 @@ function mainController($scope, $http) {
     .error(function(likes) {
       console.log('Error: ' + likes);
     });
-}
 
+  $http.get('/api/v1/foo')
+    .success(function(foo) {
+      console.log(foo["total_foo"])
+      $scope.foo = foo["total_foo"]
+      $scope.xFunction = function(){
+        return function(d) {
+            return d.key;
+        };
+      }
+      $scope.yFunction = function(){
+        return function(d) {
+            return d.y;
+        };
+      }
+
+      $scope.descriptionFunction = function(){
+        return function(d){
+            return d.key;
+        }
+      }
+    })
+    .error(function(foo) {
+      console.log('Error: ' + foo);
+    });
+
+  $http.get('/api/v1/bar')
+    .success(function(bar) {
+      console.log(bar["total_bar"])
+      $scope.bar = bar["total_bar"]
+      $scope.xFunction = function(){
+        return function(d) {
+            return d.key;
+        };
+      }
+      $scope.yFunction = function(){
+        return function(d) {
+            return d.y;
+        };
+      }
+
+      $scope.descriptionFunction = function(){
+        return function(d){
+            return d.key;
+        }
+      }
+    })
+    .error(function(bar) {
+      console.log('Error: ' + bar);
+    });
+
+}
