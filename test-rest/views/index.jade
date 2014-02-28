@@ -29,7 +29,7 @@ html(ng-app='demoAPI')
       #main
         .header
           h1 Analytics!
-          h2 Foo Bar <3 Brave New Analytics <3 Foo Bar
+          h2 Foo Bar Foo Bar
         <br>
         .content
           .pure-g
@@ -41,15 +41,20 @@ html(ng-app='demoAPI')
               h2 Total Posts<br>{{posts}}
             .pure-u-1-4
               h2 Total Comments<br>{{comments}}
+          <hr>
+          <br>
           .pure-g
             .pure-u-1-1
               h2 Total Likes<br>
-              nvd3-discrete-bar-chart(
-                data='likes', 
-                showxaxis='true', 
-                showyaxis='true', 
-                tooltips='true', 
-                interactive='true',
-                height="600",
-                xAxisTickFormat="xAxisTickFormat_Date_Format()")
+              .div.test
+                nvd3-discrete-bar-chart(
+                  data='likes'
+                  margin="{left:45,top:15,bottom:50,right:2}"
+                  staggerLabels="true"
+                  showxaxis='true'
+                  showyaxis='true' 
+                  tooltips='true' 
+                  interactive='true'
+                  height="400"
+                  xAxisTickFormat="xAxisTickFormat_Date_Format()")
 

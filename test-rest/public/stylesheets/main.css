@@ -11,34 +11,8 @@ body {
     font-size: 13px;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-label {
-    color: #34495e;
-}
-
-
-
-/*
- * -- PURE FORM STYLES --
- * Style the form inputs and labels
- */
-.pure-form label {
-    margin: 1em 0 0;
-    font-weight: bold;
-    font-size: 100%;
-}
-
-.pure-form input[type] {
-    border: 2px solid #ddd;
-    box-shadow: none;
-    font-size: 100%;
-    width: 100%;
-    margin-bottom: 1em;
+hr {
+ border: 1px solid #eee;
 }
 
 /*
@@ -55,9 +29,8 @@ label {
     background: #2d3e50;
 }
 .pure-menu.pure-menu-open.pure-menu-fixed {
-    /* Fixed menus normally have a border at the bottom. */
+    position: absolute;
     border-bottom: none;
-    /* I need a higher z-index here because of the scroll-over effect. */
     z-index: 4;
 }
 
@@ -123,7 +96,6 @@ The content `<div>` is where all your content goes.
 */
 .content {
     margin: 0 auto;
-    padding: 0 2em;
     max-width: 100%;
     margin-bottom: 50px;
     line-height: 1.6em;
@@ -133,17 +105,18 @@ The content `<div>` is where all your content goes.
      margin: 0;
      color: #333;
      text-align: center;
-     padding: 2.5em 2em 0;
+     padding-top: 2.5em;
      border-bottom: 1px solid #eee;
  }
     .header h1 {
         margin: 0.2em 0;
-        font-size: 3em;
-        font-weight: 300;
+        font-size: 4em;
+        font-weight: bold;
+        padding-bottom: 10px;
     }
      .header h2 {
+        color: #999;
         font-weight: 300;
-        color: #ccc;
         padding: 0;
         margin-top: 0;
     }
@@ -153,7 +126,6 @@ The content `<div>` is where all your content goes.
     font-weight: 300;
     color: #888;
 }
-
 
 
 /*
@@ -310,4 +282,14 @@ small screens.
             float: right;
         }
 
+}
+
+@media (max-width : 599px) {
+   /* Tablet view: 2 tiles */
+   .pure-u-1-4 {
+        font-size: 12px;
+   }
+   .test {
+
+   }
 }

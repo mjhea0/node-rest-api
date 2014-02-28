@@ -48,7 +48,7 @@ function mainController($scope, $http) {
       ];
       $scope.xAxisTickFormat_Date_Format = function(){
         return function(d){
-          return d3.time.format('%m-%d-%Y')(moment.unix(d).toDate());
+          return d3.time.format('%m-%d')(moment.unix(d).toDate());
         }
       };
     })
